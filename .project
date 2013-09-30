@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>ToDoList</name>
+=======
+	<name>HandwritingRecognitionApp</name>
+>>>>>>> 14ef86e711a38bd5d42033b1b5bcb1dd32a44107
 	<comment></comment>
 	<projects>
 	</projects>
