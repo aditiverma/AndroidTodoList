@@ -14,6 +14,7 @@ import android.gesture.GestureOverlayView.OnGesturePerformedListener;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -26,19 +27,20 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnGesturePerformedListener{
 	private GestureLibrary gestureLibrary;
+
 	private static List<Task> ToDoList = new ArrayList<Task>();
 	static int index=1;
 	ArrayAdapter<Task> adapter;
 	Button bt;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		// Inflate the menu; this adds items to the action bar if it is present.
 		setContentView(R.layout.activity_main);
 		//Get gesture library from res/raw/gestures
+
 		bt = (Button) findViewById(R.id.button);
-		
 		gestureLibrary = GestureLibraries.fromRawResource(this, R.raw.gestures);
 		
 		//Load the gesture library
@@ -52,8 +54,7 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
 		populateToDoList();
 		populateListView();
 		
-		
-		 bt.setOnClickListener(new Button.OnClickListener() {
+	 bt.setOnClickListener(new Button.OnClickListener() {
 				
 			    public void onClick(View v)
 				{
@@ -66,18 +67,15 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
 			    	ToDoList.add(new Task(index,input,R.drawable.phone));
 			        adapter.notifyDataSetChanged();
 			        index++;
-			        //populateListView();
-			        ListView list = (ListView) findViewById(R.id.task_list);
-					list.setAdapter(adapter);
-			        
+			      //  ListView list = (ListView) findViewById(R.id.task_list);
+					//list.setAdapter(adapter);
+			        et.setText("");
 			    }
 				
 				}
 			   });//bt.serOnClickListener
 		
 		
-			   
-			   
 	}
 	
 	@Override
@@ -161,7 +159,4 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
 	
  
  
-	
-	
-	  
 }
