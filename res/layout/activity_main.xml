@@ -8,16 +8,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-    
-    
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Tasks"
         android:textSize="@dimen/Heading"
-        android:layout_marginBottom="60dip" 
-		/>
+        android:layout_marginBottom="60dip" />
         
      <EditText
         android:id="@+id/editText"
@@ -41,8 +38,7 @@
         android:layout_alignBaseline="@+id/editText"
         android:layout_alignBottom="@+id/editText"
         android:layout_alignParentRight="true"
-        android:text="@string/add_task"
-        android:textSize="20sp" />
+        android:text="@string/add_task" />
      
     <android.gesture.GestureOverlayView
         android:id="@+id/item_gestureOverlay"
@@ -56,17 +52,38 @@
         android:orientation="vertical" >
 
         <ListView
-            
             android:id="@+id/task_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-           
-             >
+            android:layout_height="289dp" >
 
         </ListView>
 
     </android.gesture.GestureOverlayView>
 
-   
+    <Button
+        android:id="@+id/buttonNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/item_gestureOverlay"
+        android:layout_alignRight="@+id/item_gestureOverlay"
+        android:onClick="gotoNextDate"
+        android:text="Next" />
+
+    <Button
+        android:id="@+id/buttonPrevious"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/item_gestureOverlay"
+        android:layout_alignParentBottom="true"
+        android:onClick="gotoPreviousDate"
+        android:text="Previous" />
+
+    <TextView
+        android:id="@+id/textViewDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/item_gestureOverlay"
+        android:layout_centerHorizontal="true"
+        android:text="TextView" />
 
 </RelativeLayout>
