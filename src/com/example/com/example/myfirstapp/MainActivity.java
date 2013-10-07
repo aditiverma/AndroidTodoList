@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Context;
 import android.gesture.Gesture;
 import android.gesture.GestureLibraries;
 import android.gesture.GestureLibrary;
 import android.gesture.GestureOverlayView;
 import android.gesture.Prediction;
 import android.gesture.GestureOverlayView.OnGesturePerformedListener;
+import android.graphics.Paint;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,13 +19,18 @@ import android.view.View;
 
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.ListActivity;
 
 public class MainActivity extends Activity implements OnGesturePerformedListener{
 	private GestureLibrary gestureLibrary;
@@ -32,6 +39,7 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
 	static int index=1;
 	ArrayAdapter<Task> adapter;
 	Button bt;
+	TextView tv;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +49,15 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
 		//Get gesture library from res/raw/gestures
 
 		bt = (Button) findViewById(R.id.button);
+		tv = (TextView) findViewById(R.id.editText);
+		tv.setCursorVisible(false);
+	
 		gestureLibrary = GestureLibraries.fromRawResource(this, R.raw.gestures);
 		
 		//Load the gesture library
 		gestureLibrary.load();
 	
+		
 		//Get the GestureOverlayView
 		GestureOverlayView gestures = (GestureOverlayView) findViewById(R.id.item_gestureOverlay);
 		//Add the Listener for when a gesture is performed
@@ -54,7 +66,8 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
 		populateToDoList();
 		populateListView();
 		
-	 bt.setOnClickListener(new Button.OnClickListener() {
+		
+		bt.setOnClickListener(new Button.OnClickListener() {
 				
 			    public void onClick(View v)
 				{
@@ -70,12 +83,61 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
 			      //  ListView list = (ListView) findViewById(R.id.task_list);
 					//list.setAdapter(adapter);
 			        et.setText("");
+			        
+			        //hiding text input on add task
+			        InputMethodManager inputManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE); 
+			        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),InputMethodManager.HIDE_NOT_ALWAYS);
+			        //setting cursor invisible on text input
+			        tv.setCursorVisible(false);  
+
 			    }
 				
 				}
 			   });//bt.serOnClickListener
 		
-		
+	
+	 
+	 ListView list = (ListView) findViewById(R.id.task_list);
+	 list.setOnItemClickListener(new OnItemClickListener() {
+         @Override
+         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+             
+          //   String item = ((TextView)view).getText().toString();  
+          // String item = parent.getChildAt(BIND_ADJUST_WITH_ACTIVITY).toString();
+        	// Toast.makeText(getBaseContext(), item, Toast.LENGTH_LONG).show();
+             
+         }
+     });
+
+//	 ListView list = getListView();
+//	  for (int i = 0; i < list.getChildCount(); i++) {
+//
+//	    LinearLayout row = (LinearLayout) list.getChildAt( i );
+//	    TextView title;
+//	    title = (TextView) row.getChildAt( 0 );
+//	    //System.out.println("zeile "+i+ " "+title.getText());
+//
+//	    if(strikedItems.contains( title.getText() ))
+//	    {
+//	      title.setPaintFlags( Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+//	      System.out.println("zeile "+i+ " Title: "+title.getText());
+//	      title.setTextColor(0xFFFF0000); //black
+//
+//	     }      
+//	 }
+	 
+	 
+	 
+	 
+	}
+	
+	@Override
+	public void onStart()
+	{
+		super.onStart();
+		bt = (Button) findViewById(R.id.button);
+		tv = (TextView) findViewById(R.id.editText);
+		tv.setCursorVisible(false);
 	}
 	
 	@Override
@@ -85,44 +147,72 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
 		// Did we get any predictions?
 		if (predictions.size() > 0) {			
 			//note: the list of predictions is already sorted
-			Prediction prediction = predictions.get(0);
+			for(int i=0;i< predictions.size();i++)
+			{
+			Prediction prediction = predictions.get(i);
 			// Anything over a score of 1.0 is considered a good match
-			//if (prediction.score > 7.5) {
-				//if(prediction.name.equals("clockwise_circle")) {				
+			if (prediction.score > 1.0) {
+				
+				String predictionName = prediction.name;
+				Toast toast;
+//				if(prediction.name.equals("clockwise_circle")) {				
 					//mp.start();
-					Toast toast = Toast.makeText(getBaseContext(), prediction.name+", "+prediction.score , Toast.LENGTH_SHORT);
-					toast.show();
-				//}
-				//}
-			//else if (prediction.score > 6 && (prediction.name.equals("hyphen"))){
-			//	Toast toast = Toast.makeText(getBaseContext(), prediction.name, Toast.LENGTH_SHORT);
-			//	toast.show();
-			//}
+//					Toast toast = Toast.makeText(getBaseContext(), prediction.name+", "+prediction.score , Toast.LENGTH_SHORT);
+//					toast.show();
+//			//	}
+				
+			if(predictionName.equals("Anticlockwise"))
+			{
+				
+			}
+			else if(predictionName.equals("clockwise"))
+			{
+				
+			}
+			else if(predictionName.equals("n"))
+			{
+				
+			}
+			else if(predictionName.equals("delete"))
+			{
+				
+			}
+			
+			else if(predictionName.equals("tick"))
+			{
+				tv.setCursorVisible(true);
+			}
+		//	tv.setCursorVisible(false);
+			}
+			}//for i	
 		}
 		
 	}
 	
+
+
+
+	
 	private void populateToDoList(){
-		//EditText text = (EditText)findViewById(R.id.item_id);
-		//String abc= text .getText().toString(); 
 		
-		ToDoList.add(new Task(1,"abc", R.drawable.shopping));
-		ToDoList.add(new Task(2,"Study NUI", R.drawable.study));
-		ToDoList.add(new Task(3,"Clean Kitchen", R.drawable.cleaning));
-		ToDoList.add(new Task(4,"Call Home",R.drawable.phone));
-		ToDoList.add(new Task(5,"Call Home1",R.drawable.phone));
-		ToDoList.add(new Task(6,"Call Home2",R.drawable.phone));
-		ToDoList.add(new Task(7,"Call Home3",R.drawable.phone));
-		ToDoList.add(new Task(8,"Call Home4",R.drawable.phone));
-		ToDoList.add(new Task(9,"Call Home5",R.drawable.phone));
-		ToDoList.add(new Task(10,"Call Home6",R.drawable.phone));
-		ToDoList.add(new Task(11,"Call Home7",R.drawable.phone));
-		ToDoList.add(new Task(12,"Call Home8",R.drawable.phone));
+//		ToDoList.add(new Task(1,"abc", R.drawable.shopping));
+//		ToDoList.add(new Task(2,"Study NUI", R.drawable.study));
+//		ToDoList.add(new Task(3,"Clean Kitchen", R.drawable.cleaning));
+//		ToDoList.add(new Task(4,"Call Home",R.drawable.phone));
+//		ToDoList.add(new Task(5,"Call Home1",R.drawable.phone));
+//		ToDoList.add(new Task(6,"Call Home2",R.drawable.phone));
+//		ToDoList.add(new Task(7,"Call Home3",R.drawable.phone));
+//		ToDoList.add(new Task(8,"Call Home4",R.drawable.phone));
+//		ToDoList.add(new Task(9,"Call Home5",R.drawable.phone));
+//		ToDoList.add(new Task(10,"Call Home6",R.drawable.phone));
+//		ToDoList.add(new Task(11,"Call Home7",R.drawable.phone));
+//		ToDoList.add(new Task(12,"Call Home8",R.drawable.phone));
 	}
 	
 	private void populateListView(){
 		adapter = new MyListAdapter();
 		ListView list = (ListView) findViewById(R.id.task_list);
+	//	ListView list = (ListView) findViewById(R.id.list);
 		list.setAdapter(adapter);
 	}
 	
@@ -130,7 +220,13 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
 		
 		public MyListAdapter(){
 			super(MainActivity.this, R.layout.item_view, ToDoList);							
+//			@Override
+//		    protected void onListItemClick(ListView l, View v, final int position, long id) {
+//		    super.onListItemClick(l, v, position, id);                 
+//		    Toast.makeText(this,  "This is my row number " + position,Toast.LENGTH_LONG).show();
+//		    }
 			
+	
 		}
 		
 		@Override
