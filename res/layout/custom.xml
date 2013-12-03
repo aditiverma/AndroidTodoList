@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:contentDescription="@string/undo_gesture" >
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="57dp"
+        android:layout_marginTop="70dp"
+        android:contentDescription="Undo gesture"
+         android:textSize="35px"
+        android:text="Undo gesture" />
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/textView1"
+     	android:layout_marginLeft="57dp"
+        android:layout_marginTop="130dp"
+           android:textSize="35px"
+        android:text="Redo gesture" />
+
+    <TextView
+        android:id="@+id/text3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_below="@+id/textView2"
+           android:layout_marginLeft="57dp"
+        android:layout_marginTop="190dp"
+           android:textSize="35px"
+        android:text="Go to previous day tasks" />
+
+    <TextView
+        android:id="@+id/text4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/textView3"
+        android:layout_below="@+id/textView3"
+           android:layout_marginLeft="57dp"
+              android:textSize="35px"
+        android:layout_marginTop="250dp"
+        android:text="Go to next day tasks" />
+
+    <TextView
+        android:id="@+id/text5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_below="@+id/textView4"
+           android:layout_marginLeft="57dp"
+        android:layout_marginTop="310dp"
+           android:textSize="35px"
+          android:text="Go to current day tasks" />
+
+  <TextView
+        android:id="@+id/text6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView5"
+        android:layout_below="@+id/textView5"
+           android:layout_marginLeft="57dp"
+        android:layout_marginTop="370dp"
+           android:textSize="35px"
+          android:text="Mark tasks as completed" />
+
+  <TextView
+        android:id="@+id/text7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView6"
+        android:layout_below="@+id/textView6"
+           android:layout_marginLeft="57dp"
+        android:layout_marginTop="430dp"
+           android:textSize="35px"
+          android:text="Delete tasks" />
+
+    <Button
+        android:id="@+id/buttonok"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+       
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="450dp"
+        android:layout_marginTop="500dp"
+        android:height="85px"
+        android:text="OK"
+        android:textSize="45px" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:layout_marginLeft="460dp"
+        android:layout_marginTop="70dp"
+        android:src="@drawable/undo2" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="460dp"
+        android:layout_marginTop="130dp"
+        android:src="@drawable/redo2" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:layout_marginLeft="460dp"
+        android:layout_marginTop="190dp"
+        android:src="@drawable/prev2" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:layout_marginLeft="460dp"
+        android:layout_marginTop="250dp"
+        android:src="@drawable/next2" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:layout_marginLeft="460dp"
+        android:layout_marginTop="310dp"
+        android:src="@drawable/home2" />
+    
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:layout_marginLeft="460dp"
+        android:layout_marginTop="370dp"
+        android:src="@drawable/complete" />
+     <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:layout_marginLeft="460dp"
+        android:layout_marginTop="430dp"
+        android:src="@drawable/delete" />
+
+</RelativeLayout>

@@ -23,28 +23,60 @@ public final class R {
     }
     public static final class drawable {
         public static final int cleaning=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int phone=0x7f020002;
-        public static final int shopping=0x7f020003;
-        public static final int study=0x7f020004;
+        public static final int complete=0x7f020001;
+        public static final int delete=0x7f020002;
+        public static final int help=0x7f020003;
+        public static final int home=0x7f020004;
+        public static final int home2=0x7f020005;
+        public static final int ic_launcher=0x7f020006;
+        public static final int next=0x7f020007;
+        public static final int next2=0x7f020008;
+        public static final int phone=0x7f020009;
+        public static final int prev=0x7f02000a;
+        public static final int prev2=0x7f02000b;
+        public static final int redo=0x7f02000c;
+        public static final int redo2=0x7f02000d;
+        public static final int shopping=0x7f02000e;
+        public static final int study=0x7f02000f;
+        public static final int undo=0x7f020010;
+        public static final int undo2=0x7f020011;
     }
     public static final class id {
-        public static final int action_settings=0x7f09000b;
+        public static final int action_settings=0x7f09001d;
         public static final int button=0x7f090002;
-        public static final int buttonNext=0x7f090005;
-        public static final int buttonPrevious=0x7f090006;
+        public static final int buttonok=0x7f090014;
         public static final int editText=0x7f090001;
-        public static final int item_desc=0x7f09000a;
+        public static final int imageButton1=0x7f090006;
+        public static final int imageButton2=0x7f090007;
+        public static final int imageView1=0x7f090015;
+        public static final int imageView2=0x7f090016;
+        public static final int imageView3=0x7f090017;
+        public static final int imageView4=0x7f090018;
+        public static final int imageView5=0x7f090019;
+        public static final int imageView6=0x7f09001a;
+        public static final int imageView7=0x7f09001b;
+        public static final int item_desc=0x7f09001c;
         public static final int item_gestureOverlay=0x7f090003;
-        public static final int item_icon=0x7f090008;
-        public static final int item_id=0x7f090009;
         public static final int task_list=0x7f090004;
+        public static final int text1=0x7f090008;
+        public static final int text2=0x7f090009;
+        public static final int text3=0x7f09000a;
+        public static final int text4=0x7f09000c;
+        public static final int text5=0x7f09000e;
+        public static final int text6=0x7f090010;
+        public static final int text7=0x7f090012;
         public static final int textView1=0x7f090000;
-        public static final int textViewDate=0x7f090007;
+        public static final int textView2=0x7f09000b;
+        public static final int textView3=0x7f09000d;
+        public static final int textView4=0x7f09000f;
+        public static final int textView5=0x7f090011;
+        public static final int textView6=0x7f090013;
+        public static final int textViewDate=0x7f090005;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
-        public static final int item_view=0x7f030001;
+        public static final int custom=0x7f030001;
+        public static final int item_view=0x7f030002;
     }
     public static final class menu {
         public static final int main=0x7f080000;
@@ -58,6 +90,7 @@ public final class R {
         public static final int add_task=0x7f060004;
         public static final int app_name=0x7f060000;
         public static final int hello_world=0x7f060002;
+        public static final int undo_gesture=0x7f060005;
     }
     public static final class style {
         /** 

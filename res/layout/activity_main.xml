@@ -49,34 +49,15 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView1"
         android:gestureStrokeType="multiple"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <ListView
             android:id="@+id/task_list"
             android:layout_width="match_parent"
-            android:layout_height="289dp" >
-
+            android:layout_height="wrap_content" >
         </ListView>
 
     </android.gesture.GestureOverlayView>
-
-    <Button
-        android:id="@+id/buttonNext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/item_gestureOverlay"
-        android:layout_alignRight="@+id/item_gestureOverlay"
-        android:onClick="gotoNextDate"
-        android:text="Next" />
-
-    <Button
-        android:id="@+id/buttonPrevious"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/item_gestureOverlay"
-        android:layout_alignParentBottom="true"
-        android:onClick="gotoPreviousDate"
-        android:text="Previous" />
 
     <TextView
         android:id="@+id/textViewDate"
@@ -84,6 +65,26 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/item_gestureOverlay"
         android:layout_centerHorizontal="true"
-        android:text="TextView" />
+        android:text="TextView" 
+        android:textSize="50px"/>
 
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editText"
+        android:layout_alignLeft="@+id/button"
+        android:src="@android:drawable/btn_star" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editText"
+        android:layout_alignRight="@+id/editText"
+        android:layout_marginRight="40dp"
+        android:src="@android:drawable/btn_star" />
+    
+
+    
 </RelativeLayout>
