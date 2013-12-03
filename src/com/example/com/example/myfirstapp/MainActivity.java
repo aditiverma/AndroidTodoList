@@ -1,5 +1,6 @@
 package com.example.com.example.myfirstapp;
 
+
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
@@ -23,10 +24,12 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+
 import android.gesture.Gesture;
 import android.gesture.GestureLibraries;
 import android.gesture.GestureLibrary;
 import android.gesture.GestureOverlayView;
+
 import android.gesture.GestureOverlayView.OnGesturePerformedListener;
 import android.gesture.Prediction;
 import android.graphics.Color;
@@ -45,6 +48,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -81,6 +85,7 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
 		// Inflate the menu; this adds items to the action bar if it is present.
 		setContentView(R.layout.activity_main);
 		//Get gesture library from res/raw/gestures
+
 		
 		undoTasks.clear();
 		redoTasks.clear();
@@ -101,6 +106,7 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
 		GestureOverlayView gestures = (GestureOverlayView) findViewById(R.id.item_gestureOverlay);
 		//Add the Listener for when a gesture is performed
 		gestures.addOnGesturePerformedListener(this);
+
 		populateListView();
 
 		//aditi begin
@@ -589,6 +595,7 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
 			//			//aditi end
 
 		}
+
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {

@@ -1,5 +1,6 @@
 package com.example.com.example.myfirstapp;
 
+<<<<<<< HEAD
 public class Task implements Comparable {
 	private int TaskID;
 	private String Desc;
@@ -8,12 +9,15 @@ public class Task implements Comparable {
 	public boolean Completed = false;
 	
 	public Task(int taskID, String desc, int iconID, boolean selected, boolean completed) {
+
 		super();
 		TaskID = taskID;
 		Desc = desc;
 		IconID = iconID;
+
 		Selected = selected;
 		Completed = completed;
+
 	}
 	public int getIconID() {
 		return IconID;
@@ -23,6 +27,7 @@ public class Task implements Comparable {
 	}
 	public String getDesc() {
 		return Desc;
+
 	}
 	public boolean isSelected() {
 		return Selected;
@@ -35,5 +40,6 @@ public class Task implements Comparable {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 	
 }
