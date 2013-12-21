@@ -59,7 +59,6 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
 	private static List<Task> ToDoList = new ArrayList<Task>();
 	static int index=1;
 	ArrayAdapter<Task> adapter;
-	//aditi begin
 	Button bt;
 	public View row;
 	TextView tv;
@@ -71,12 +70,9 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
 	public Map<Task, Integer> mapDeletedTaskWithIndex = new HashMap<Task, Integer>();
 	final Context context = this;
 	ListView lv;
-	//aditi end
 
-		int count=0;
-	//Maryam
+	int count=0;
 	static int dayShift=0;
-	//Maryam
 	public int selectMode =0;
 
 	@Override
@@ -86,17 +82,12 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
 		setContentView(R.layout.activity_main);
 		//Get gesture library from res/raw/gestures
 
-		
 		undoTasks.clear();
 		redoTasks.clear();
 		mapDeletedTaskWithIndex.clear();
-		//aditi begin
 		bt = (Button) findViewById(R.id.button);
 		tv = (TextView) findViewById(R.id.editText);
-		//tv.setCursorVisible(false);
 		lv = (ListView) findViewById(R.id.task_list);
-		//aditi end
-
 		gestureLibrary = GestureLibraries.fromRawResource(this, R.raw.gestures);
 
 		//Load the gesture library
@@ -106,10 +97,7 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
 		GestureOverlayView gestures = (GestureOverlayView) findViewById(R.id.item_gestureOverlay);
 		//Add the Listener for when a gesture is performed
 		gestures.addOnGesturePerformedListener(this);
-
 		populateListView();
-
-		//aditi begin
 		bt.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v)
 			{
@@ -122,83 +110,48 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
 					adapter.notifyDataSetChanged();
 					lv.setSelection(adapter.getCount() - 1);
 					index++;
-					//Maryam
 					saveTasksToFile();
-					//Maryam
-
-					//  ListView list = (ListView) findViewById(R.id.task_list);
-					//list.setAdapter(adapter);
 					et.setText("");
 				}
 
 			}
 		});//bt.setOnClickListener
-		//aditi end
-
-		//Maryam
 		gotoDate(getDate(dayShift));
-		//Maryam
 
 	}
-
 	 @Override
      public boolean onCreateOptionsMenu(Menu menu)
      {
       menu.add("Help");
-    //  Button help = new Button("Help me");
       return true;
      }
 	 @Override
-	// public boolean onOptionsItemSelected(MenuItem item) {
 	 public boolean onMenuItemSelected(int featureId, MenuItem item) {
 	  // custom dialog
-
-	    final Dialog dialog = new Dialog(this);	
+	     final Dialog dialog = new Dialog(this);	
 	     dialog.setContentView(R.layout.custom);
-	  			dialog.setTitle("Gestures Help");
-	   
-	  			// set the custom dialog components - text, image and button
+             dialog.setTitle("Gestures Help");
+	  // set the custom dialog components - text, image and button
 //	  			TextView text = (TextView) dialog.findViewById(R.id.text);
-//	  			text.setText("Android custom dialog example!");
-	  			//ImageView image = (ImageView) dialog.findViewById(R.id.image);
-	  			//image.setImageResource(R.drawable.ic_launcher);
-//	  			ImageView image1 = (ImageView) dialog.findViewById(R.id.image1);
-//	  			ImageView image2 = (ImageView) dialog.findViewById(R.id.image2);
-//	  			ImageView image3 = (ImageView) dialog.findViewById(R.id.image3);
-//	  			ImageView image4= (ImageView) dialog.findViewById(R.id.image4);
-//	  			ImageView image5 = (ImageView) dialog.findViewById(R.id.image5);
-//	  			ImageView image6 = (ImageView) dialog.findViewById(R.id.image6);
-//	  			ImageView image7 = (ImageView) dialog.findViewById(R.id.image7);
 	  			TextView text1 = (TextView) dialog.findViewById(R.id.text1);
-	  			//text1.setText("Undo gesture");
 	  			TextView text2 = (TextView) dialog.findViewById(R.id.text2);
-	  			//text2.setText("Redo Gesture");
 	  			TextView text3 = (TextView) dialog.findViewById(R.id.textView3);
-	  			//text3.setText("Go to next day");
 	  			TextView text4 = (TextView) dialog.findViewById(R.id.text4);
-	  			//text4.setText("Go to previous day");
 	  			TextView text5 = (TextView) dialog.findViewById(R.id.text5);
-	  			//text5.setText("Go to current day");
-	  		//	TextView text6 = (TextView) dialog.findViewById(R.id.text6);
-	  			//text6.setText("Delete tasks");
-	  		
      	  		Button dialogButton = (Button) dialog.findViewById(R.id.buttonok);
-	  			// if button is clicked, close the custom dialog
 	  			dialogButton.setOnClickListener(new OnClickListener() {
 	  				@Override
 	  				public void onClick(View v) {
 	  					dialog.dismiss();
 	  				}
 	  			});
-	  		  dialog.setCancelable(true);
+	  		        dialog.setCancelable(true);
 	  			dialog.show();
 	     
 	     
  	     return true;
 	 }
 
-	//Maryam:returns date
-	//getDate(dayShift) returns the date which user is in it
 	public String getDate(int dayShift){
 		Calendar c = Calendar.getInstance();
 		c.add(Calendar.DAY_OF_YEAR, dayShift);
@@ -207,12 +160,12 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
 		return formattedDate;
 	}
 
-	public void gotoNextDate(){//View view){
+	public void gotoNextDate(){
 		++dayShift;
 		gotoDate(getDate(dayShift));
 	}
 
-	public void gotoPreviousDate(){//View view){
+	public void gotoPreviousDate(){
 		--dayShift;
 		gotoDate(getDate(dayShift));
 	}
@@ -226,24 +179,20 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
 		gotoDate(formattedDate);
 	}
 
-	//Maryam
 	public void gotoDate(String date){
 		TextView textDate= (TextView) findViewById(R.id.textViewDate);
 		textDate.setText(date);
-		
 		loadTasksFromFile();
 
 	}
 
-	//Maryam
 	//saves all tasks in the current shown list into a seprate file for that date
 	private void saveTasksToFile(){
 		String state = Environment.getExternalStorageState();
 		if (Environment.MEDIA_MOUNTED.equals(state)) {
-			File dir = new File (Environment.getExternalStorageDirectory().getAbsolutePath() + "/ToDoX");
-			dir.mkdirs();
-			File file = new File(dir, getDate(dayShift) +".txt");
-
+		File dir = new File (Environment.getExternalStorageDirectory().getAbsolutePath() + "/ToDoX");
+		dir.mkdirs();
+		File file = new File(dir, getDate(dayShift) +".txt");
 			try {
 				FileOutputStream f = new FileOutputStream(file,false);
 				PrintWriter pw = new PrintWriter(f);
@@ -264,16 +213,13 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
 		}
 	}
 
-	//Maryam
 	private void loadTasksFromFile(){
 		ToDoList.clear();
-
 		String state = Environment.getExternalStorageState();
 		if (Environment.MEDIA_MOUNTED.equals(state)) {
 			File dir = new File (Environment.getExternalStorageDirectory().getAbsolutePath() + "/ToDoX");
 			dir.mkdirs();
 			File file = new File(dir, getDate(dayShift) +".txt");
-
 			try{
 				FileInputStream f = new FileInputStream(file);
 				DataInputStream in = new DataInputStream(f);
@@ -285,13 +231,13 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
 					String[] splitted = strLine.split("\\s+");
 					if(splitted.length>0)
 						//if(splitted[1].equals("true"))
-						if(splitted[splitted.length-1].equals("true"))//1test last word 	
+						if(splitted[splitted.length-1].equals("true"))//test last word 	
 						  {comp = true;}
 						else
 						{
 							comp= false;//4. else not complete
 						}
-						//2start-add this to include all words
+						//start-add this to include all words
 						String result = splitted[0];
 						for(int i=1; i< splitted.length-1;i++)
 						{
@@ -311,10 +257,6 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
 
 		}
 		adapter.notifyDataSetChanged();
-
-		//Maryam
-
-		//aditi begin
 		ListView list = (ListView) findViewById(R.id.task_list);
 		list.setOnItemClickListener(new OnItemClickListener() {
 			@Override
@@ -399,9 +341,6 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
 				//				if(prediction.name.equals("clockwise_circle")) {
 				//					mp.start();
 				//					Toast toast = Toast.makeText(getBaseContext(), prediction.name+", "+prediction.score , Toast.LENGTH_SHORT);
-				//					toast.show();
-				//			//	}
-				//aditi begin-- code to detect gestures from here
 				
 				if(selectMode == 1) {
 					mapDeletedTaskWithIndex.clear();
@@ -449,9 +388,6 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
 						}
 						saveTasksToFile();
 						selectMode=0;
-
-						//mapDeletedTaskWithIndex.clear();
-
 						selectedTasks.clear();
 					} else if(predictionName.equals("tick")) {
 						if(selectedTasks!=null && selectedTasks.size()!=0)
@@ -573,9 +509,6 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
 			}
 		}
 	}
-	//aditi end
-
-
 	private void populateListView(){
 		adapter = new MyListAdapter();
 		ListView list = (ListView) findViewById(R.id.task_list);
@@ -583,16 +516,9 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
 	}
 
 	private class MyListAdapter extends ArrayAdapter<Task>{
-
-		//aditi start
 		ListView list = (ListView) findViewById(R.id.task_list);
-		//aditi end
 		public MyListAdapter(){
 			super(MainActivity.this, R.layout.item_view, ToDoList);
-			//aditi start
-			//			list.setItemsCanFocus(false);
-			//			list.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-			//			//aditi end
 
 		}
 
@@ -605,14 +531,8 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
 				itemView = li.inflate(R.layout.item_view, parent, false);
 			Task currentTask = ToDoList.get(position);
 
-			//ImageView imageview = (ImageView)itemView.findViewById(R.id.item_icon);
-			//imageview.setImageResource(currentTask.getIconID());
-
 			TextView Desctext = (TextView) itemView.findViewById(R.id.item_desc);
 			Desctext.setText(currentTask.getDesc());
-
-			//TextView idtext = (TextView) itemView.findViewById(R.id.item_id);
-			//idtext.setText(currentTask.getTaskID()+".");
 
 			if(currentTask.isSelected())
 				itemView.setBackgroundResource(android.R.color.holo_blue_bright);
