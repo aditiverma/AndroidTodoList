@@ -1,7 +1,7 @@
 AndroidTodoList
 ===============
 
-This is an android app that helps users maintain a To-Do list for tasks on different days, with tasks entered through handwriting, and gestures for perforaming different actions. The gestures were selected based on user study with users of varying expertise levels.
+This is an android app that helps users maintain a To-Do list for tasks on different days, with tasks entered through handwriting, and gestures for performing different actions. The gestures were selected based on user study with users of varying expertise levels.
 
 Essential features:
 - add a new task 
