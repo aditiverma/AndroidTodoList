@@ -7,10 +7,9 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="18" />
-<<<<<<< HEAD
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-=======
->>>>>>> 85cddfe8cdfa5c7ae92c43524636c251150b501d
+
 
     <application
         android:allowBackup="true"
